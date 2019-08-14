@@ -1,0 +1,44 @@
+<div class="container" ng-controller="propostaController">
+        <h1> Propostas processadas </h1>
+    </br>
+
+    <form class="form-inline" ng-submit="findByCpf()">              
+        <input id="filterCpf" class="form-control" placeholder="Informe o CPF..." ng-model="filter" name="srch-term" type="text">
+        <input class="btn btn-secondary" type="submit" value="Pesquisar"/>                   
+    </form>
+    
+    <br/>
+
+    <table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Estado civil</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Dependentes</th>
+        <th scope="col">Renda</th>
+        <th scope="col">Resultado</th>
+        <th scope="col">Limite</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="proposta in propostas">        
+            <td><span ng-bind="proposta.nome"></span></td>
+            <td><span ng-bind="proposta.idade"></span></td>
+            <td><span ng-bind="proposta.sexo"></span></td>
+            <td><span ng-bind="proposta.estadoCivil"></span></td>
+            <td><span ng-bind="proposta.estado"></span></td>
+            <td><span ng-bind="proposta.dependentes"></span></td>
+            <td><span ng-bind="proposta.renda"></span></td>
+            <td><span ng-bind="proposta.resultado"></span></td>
+            <td><span ng-bind="proposta.limite"></span></td>
+            <td ng-if="!proposta.resultado"><button class="btn btn-info" type="button"  ng-click="analisarProposta(proposta)">Analisar</button></td>
+            <td ng-if="proposta.resultado" ><button class="btn btn-warning" type="button"  ng-click="analisarProposta(proposta)">Reprocessar</button></td>
+        </tr>   
+    </tbody>
+    </table>   
+
+</div>
